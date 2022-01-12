@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export const Register = ({props}) => {
-    const [getMessage, setGetMessage] = useState({})
 
     const [getName, setName] = useState({})
     const [getEmail, setEmail] = useState({})
@@ -11,6 +10,7 @@ export const Register = ({props}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // console.log("sending axios request")
         axios.post(
             'http://localhost:3000/register', 
             {
@@ -20,8 +20,11 @@ export const Register = ({props}) => {
                 password: getPassword
             }
             ).then(response => {
-          console.log("SUCCESS", response)
-          setGetMessage(response)
+                console.log(response)
+                if(response.data.resultStatus === 'SUCCESS'){
+                    console.log("should redirect")
+                    window.location.replace("http://localhost:3000")
+          }
         }).catch(error => {
           console.log(error)
         })

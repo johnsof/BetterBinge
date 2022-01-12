@@ -1,22 +1,21 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router, 
   Routes,
   Route,
 } from "react-router-dom";
-import axios from 'axios'
 import {Deploy} from './Component/Deploy/Deploy'
 import {Register} from './Component/Register/register'
+import { Home } from './Component/Home/Home';
 
 function App() {
-  const [getMessage, setGetMessage] = useState({})
 
 
   return (
     <Router>
     <Routes>
-      <Route path='/' element = {<Deploy/>}/>
+      <Route path='/' element = {<Home/>}/>
       <Route path = '/flask/hello' element = {<Deploy />} />
       <Route path='/register' element ={<Register/>}/>
     </Routes>
